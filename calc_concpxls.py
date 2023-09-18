@@ -6,6 +6,7 @@ import openpyxl
 from openpyxl import load_workbook
 pixel_count_list = []
 
+#function defining different percentages for different days of the year to calculate lower limit of concentration that passes off as sea ice.
 def getPerc(days):
     high = 18
     if days <= 100:
@@ -18,6 +19,8 @@ def getPerc(days):
         return 16 - (16 / (365 - 268)) * (days - 268)
     else:
         return 18 - (18/(365-268)) * (days - 268)
+
+#function for suming the total pixels that have sea ice concentration above a certain lower limit calculated based on what day of the year it is
 def getPixCount(path, day_count):
     perc = getPerc(day_count)
     lower_pix = 152 + 848 * (perc/100)
@@ -32,7 +35,7 @@ def getPixCount(path, day_count):
     return(count)
 
 
-
+#calculation final sea ice extent for all the image files and storing it in a list
 path = "D:\\NCPOR\\Sea Ice Concentration Data\\2003\\"
 day_count = 0
 obj1 = os.scandir(path)
@@ -46,6 +49,7 @@ for entry1 in obj1:
                 day_count += 1
                 pixel_count_list.append((625*getPixCount(path + "\\" + entry2.name, day_count)/1000000))
 
+#storing all the data in day wise format in an excel file
 date_year = []
 date_month = []
 date_date = []
