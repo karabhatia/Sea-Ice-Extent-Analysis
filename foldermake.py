@@ -1,5 +1,4 @@
 import os
-
 #creating various folders by using the folder design of an old one
 
 #defining fuction for copying folder structure
