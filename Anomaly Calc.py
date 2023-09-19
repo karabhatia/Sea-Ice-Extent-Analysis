@@ -2,7 +2,7 @@ import os
 import pandas as pd
 
 
-seaIce_df = pd.read_excel("C:\\Users\\KARA BHATIA\\AppData\\Local\\Programs\\Python\\Python310\\indianoceanavg.xlsx")
+seaIce_df = pd.read_excel("C:\\Users\\AvgData\\Antarctic_avg.xlsx")
 
 list_month=[]
 for row in seaIce_df.itertuples(index=False):
@@ -31,5 +31,5 @@ for yrr in range(1980,2023):
 
 #appending this data into excel
 df = pd.DataFrame ({'Years': yrlist, 'Jan': anomcalc(0), 'Feb': anomcalc(1), 'Mar': anomcalc(2), 'Apr': anomcalc(3), 'May': anomcalc(4),'June':anomcalc(5), 'July':anomcalc(6), 'Aug': anomcalc(7), 'Sep':anomcalc(8), 'Oct': anomcalc(9), 'Nov': anomcalc(10), 'Dec': anomcalc(11) })
-df.to_excel('indianoceananomaly.xlsx')
+df.to_excel('Antarctic_anomaly.xlsx')
 
